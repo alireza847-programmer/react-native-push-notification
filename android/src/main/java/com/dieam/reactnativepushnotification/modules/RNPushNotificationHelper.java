@@ -268,9 +268,9 @@ public class RNPushNotificationHelper {
                 }
             }
             
-            String once = false;
+            Boolean once = false;
             if(bundle.containsKey("once")){
-                 once = bundle.getString("once");
+                 once = bundle.getBoolean("once");
             }
 
             NotificationCompat.Builder notification = new NotificationCompat.Builder(context, channel_id)
