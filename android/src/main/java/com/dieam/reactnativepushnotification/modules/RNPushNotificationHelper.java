@@ -267,11 +267,10 @@ public class RNPushNotificationHelper {
                         visibility = NotificationCompat.VISIBILITY_PRIVATE;
                 }
             }
-            String once = false;
-
-            if(bundle.containsKey('once')){
-                 once = bundle.getString("once");
             
+            String once = false;
+            if(bundle.containsKey("once")){
+                 once = bundle.getString("once");
             }
 
             NotificationCompat.Builder notification = new NotificationCompat.Builder(context, channel_id)
