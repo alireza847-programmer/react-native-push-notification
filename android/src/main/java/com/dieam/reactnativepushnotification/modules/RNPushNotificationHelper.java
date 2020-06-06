@@ -1,4 +1,3 @@
-//edit update notificatioion
 package com.dieam.reactnativepushnotification.modules;
 
 
@@ -268,13 +267,21 @@ public class RNPushNotificationHelper {
                         visibility = NotificationCompat.VISIBILITY_PRIVATE;
                 }
             }
+            String once = false;
+
+            if(bundle.containsKey('once')){
+                 once = bundle.getString("once");
+            
+            }
 
             NotificationCompat.Builder notification = new NotificationCompat.Builder(context, channel_id)
                     .setContentTitle(title)
                     .setTicker(bundle.getString("ticker"))
                     .setVisibility(visibility)
                     .setPriority(priority)
+                    .setOnlyAlertOnce(once)
                     .setAutoCancel(bundle.getBoolean("autoCancel", true));
+
             
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // API 26 and higher
                 // Changing Default mode of notification
@@ -486,6 +493,8 @@ public class RNPushNotificationHelper {
                     String tag = bundle.getString("tag");
                     notificationManager.notify(tag, notificationID, info);
                 } else {
+                  
+                   
                     notificationManager.notify(notificationID, info);
                 }
             }
